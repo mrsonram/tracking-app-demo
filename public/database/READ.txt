@@ -1,0 +1,12 @@
+Account
+
+[
+	{
+		'email':'admin@tracking.co.th',
+		'password':'admin1234'
+	},
+	{
+		'email':'guest@tracking.co.th',
+		'password':'guest1234'
+	}
+]
