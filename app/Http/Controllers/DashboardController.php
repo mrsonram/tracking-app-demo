@@ -20,7 +20,7 @@ class DashboardController extends Controller
             $note = DB::table('notes')
                 ->join('users', 'notes.created_by', '=', 'users.id')
                 ->select('notes.*', 'users.name')
-                ->paginate(10);
+                ->paginate(5);
 
             return view('dashboard', [
                 'name' => $name,
@@ -93,5 +93,24 @@ class DashboardController extends Controller
         ]);
 
         return response()->json(['status' => 'success', 'message' => 'Note updated successfully']);
+    }
+
+    public function note_management() {
+        if (!Auth::check()) {
+            return view('login');
+        } else {
+            $user = Auth::user();
+            $name = $user->name;
+
+            $note = DB::table('notes')
+                ->join('users', 'notes.created_by', '=', 'users.id')
+                ->select('notes.*', 'users.name')
+                ->paginate(5);
+
+            return view('note', [
+                'name' => $name,
+                'notes' => $note,
+            ]);
+        }
     }
 }

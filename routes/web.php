@@ -37,3 +37,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // Note
 Route::get('/view', [DashboardController::class, 'note_view'])->name('View');
 Route::post('/change', [DashboardController::class, 'note_update'])->name('Change');
+
+
+// Note Management
+Route::get('/note', [DashboardController::class, 'note_management'])->name('Note');
